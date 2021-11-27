@@ -41,7 +41,7 @@
                     <tr>
                         <th>{{ $teacher->id }}</th>
                         <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->center->name }}</td>
+                        <td>{{ $teacher->department->name }}</td>
                         <td  class="d-flex align-items-baseline gap-2">
                             {{-- Editar --}}
                             <a href="" class="btn btn-outline-primary btn-sm mr-3">

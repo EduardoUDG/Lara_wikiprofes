@@ -18,20 +18,20 @@
         <hr>
 
         <!-- Formulario -->
-        <form action="" method="POST">
+        <form action="{{ route('teachers.store') }}" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Nombre del profesor</label>
-            <input type="email" name="name" class="form-control" id="name" placeholder="Nombre">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Nombre">
             {{-- <div id="name" class="form-text text-danger">Well never share your email with anyone else.</div> --}}
           </div>
 
           <div class="group-input mb-3">
             <label for="">Universidad</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Universidad de guadalajara</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" name="university_id">
+                <option selected>...</option>
+                @foreach ( $universities as $university )
+                    <option value="{{ $university->id }}">{{ $university->name }}</option>
+                @endforeach
             </select>
             {{-- <div id="nombre" class="form-text text-danger">Well never share your email with anyone else.</div> --}}
           </div>
@@ -39,31 +39,34 @@
 
           <div class="group-input mb-3">
             <label for="">Departamento</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Ciencias computacionales</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" name="department_id">
+              <option selected>...</option>
+                @foreach ( $departments as $department )
+                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                @endforeach
             </select>
           </div>
 
 
           <div class="group-input mb-3">
             <label for="">Campus  </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>CUCEI</option>
-              <option value="1">one</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" name="center_id">
+              <option selected>...</option>
+                @foreach ( $centers as $center )
+                <option value="{{ $center->id }}">{{ $center->name }}</option>
+                @endforeach
             </select>
           </div>
 
           <!-- Button send -->
           <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-send mx-1"></i>
-              Registrar
-            </button>
+            <form action="{{ route('teachers.store') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-send mx-1"></i>
+                  Registrar
+                </button>
+            </form>
             <a href="" class="btn btn-outline-danger">
               Cancelar
             </a>

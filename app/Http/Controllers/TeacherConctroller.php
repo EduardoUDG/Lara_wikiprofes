@@ -23,12 +23,19 @@ class TeacherConctroller extends Controller
         $departments  = Department::all();
         $centers      = Center::all();
 
-        return view('teachers.teacherCreate', compact('universities', 'centers', 'centers'));
+        return view('teachers.teacherCreate', compact('universities', 'departments', 'centers'));
     }
 
     public function store(Request $request)
     {
-        //
+        $teacher = new Teacher();
+        $teacher->name = $request->name;
+        $teacher->university_id = $request->university_id;
+        $teacher->department_id = $request->department_id;
+        $teacher->center_id = $request->center_id;
+
+        $teacher->save();
+        return redirect()->route('teachers.index')->with('infor', 'Profesor creado correctamente');
     }
 
     public function show($teacher)
