@@ -49,3 +49,7 @@
 .text-secondary {
   color: var(--text-secondary);
 }
+
+.bg-body {
+    background-color: var(--body-bg);
+}
