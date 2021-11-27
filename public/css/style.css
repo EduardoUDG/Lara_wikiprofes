@@ -53,3 +53,7 @@
 .bg-body {
     background-color: var(--body-bg);
 }
+
+.bb-primary {
+    border-bottom: 3px solid var(--text-primary);
+}

@@ -31,7 +31,7 @@
                     </div>
 
                     {{--  Remember  --}}
-                    <div class="form-group row">
+                    <div class="form-group row mb-3">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">
@@ -42,12 +42,12 @@
 
 
                     <div class="form-group row mb-0">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary shadow">
                             {{ __('Ingresar') }}
                         </button>
                         @if (Route::has('password.request'))
-                            <a class="btn btn-link btn-sm" href="{{ route('password.request') }}">
-                                {{ __('Olivdaste tu contraseña?') }}
+                            <a class="btn btn-link btn-sm mt-2" href="{{ route('password.request') }}">
+                                {{ __('Olvidaste tu contraseña?') }}
                             </a>
                         @endif
                     </div>
