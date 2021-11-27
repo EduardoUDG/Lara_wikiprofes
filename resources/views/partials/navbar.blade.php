@@ -35,13 +35,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item mx-3">
-                                <a class="btn btn-primary px-3" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
+                                <a class="btn btn-primary px-5" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="btn btn-outline-primary px-3"
+                                <a class="btn btn-outline-primary px-5"
                                     href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                             </li>
                         @endif
