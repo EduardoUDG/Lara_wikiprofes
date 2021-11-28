@@ -10,7 +10,7 @@
       <div class="col-6">
         <div class="d-flex my-3 justify-content-between align-items-baseline">
           <h2>Registrar nuevo profesor</h2>
-          <a href="" class="btn btn-outline-primary">
+          <a href="{{ route('teachers.index') }}" class="btn btn-outline-primary">
             Regresar
             <i class="bi bi-backspace mx-2"></i>
           </a>
@@ -67,7 +67,7 @@
                   Registrar
                 </button>
             </form>
-            <a href="" class="btn btn-outline-danger">
+            <a href="{{ route('teachers.create') }}" class="btn btn-outline-danger">
               Cancelar
             </a>
           </div>
