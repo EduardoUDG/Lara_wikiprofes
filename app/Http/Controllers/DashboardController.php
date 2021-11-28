@@ -15,8 +15,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('layouts.wikiprofes');
+        return view('dashboard.dashboarIndex');
     }
 
-    
+
+
+
 }
