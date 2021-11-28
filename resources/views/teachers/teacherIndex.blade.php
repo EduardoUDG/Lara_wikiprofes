@@ -46,7 +46,7 @@
                         <td>{{ $teacher->center->name }}</td>
                         <td  class="d-flex align-items-baseline gap-2">
                             {{-- Editar --}}
-                            <a href="" class="btn btn-outline-primary btn-sm mr-3">
+                            <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-outline-primary btn-sm mr-3">
                             <i class="bi bi-pencil"></i>
                             Editar
                             </a>
@@ -85,6 +85,10 @@
                         </td>
                     </tr>
                     @endforeach
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        <b>No existen</b> registros en la base de datos
+                    </div>
                 @endif
             </tbody>
             </table>

@@ -28,6 +28,13 @@ class TeacherConctroller extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'university_id' => 'required',
+            'department_id' => 'required',
+            'center_id' => 'required'
+        ]);
+
         $teacher = new Teacher();
         $teacher->name = $request->name;
         $teacher->university_id = $request->university_id;
@@ -38,19 +45,37 @@ class TeacherConctroller extends Controller
         return redirect()->route('teachers.index')->with('infor', 'Profesor creado correctamente');
     }
 
-    public function show($teacher)
+    public function show(Teacher $teacher)
     {
-        //
+
+        // return view('teachers.teacherShow', compact('teacher'));
     }
 
-    public function edit($teacher)
+    public function edit(Teacher $teacher)
     {
-        //
+        $universities = University::all();
+        $departments  = Department::all();
+        $centers      = Center::all();
+        return view('teachers.teacherEdit', compact('teacher', 'universities', 'departments', 'centers'));
     }
 
-    public function update(Request $request, $teacher)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'university_id' => 'required',
+            'department_id' => 'required',
+            'center_id' => 'required'
+        ]);
+
+        $teacher->name = $request->name;
+        $teacher->university_id = $request->university_id;
+        $teacher->department_id = $request->department_id;
+        $teacher->center_id = $request->center_id;
+
+        $teacher->update();
+        return redirect()->route('teachers.index')->with('info', 'Profesor editado correctamente');
+
     }
 
     public function destroy(Teacher $teacher)
