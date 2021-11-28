@@ -10,19 +10,23 @@
       <div class="col-6">
         <div class="d-flex my-3 justify-content-between align-items-baseline">
           <h2>Registrar nuevo profesor</h2>
-          <a href="" class="btn btn-outline-primary">
+          <a href="{{ route('teachers.index') }}" class="btn btn-outline-primary">
             Regresar
             <i class="bi bi-backspace mx-2"></i>
           </a>
         </div>
         <hr>
 
-        <!-- Formulario -->
+        {{-- Formulario --}}
         <form action="{{ route('teachers.store') }}" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Nombre del profesor</label>
             <input type="text" name="name" class="form-control" id="name" placeholder="Nombre">
-            {{-- <div id="name" class="form-text text-danger">Well never share your email with anyone else.</div> --}}
+            @error('name')
+                <div id="name" class="form-text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
           </div>
 
           <div class="group-input mb-3">
@@ -33,7 +37,11 @@
                     <option value="{{ $university->id }}">{{ $university->name }}</option>
                 @endforeach
             </select>
-            {{-- <div id="nombre" class="form-text text-danger">Well never share your email with anyone else.</div> --}}
+            @error('university_id')
+                <div class="form-text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
           </div>
 
 
@@ -45,6 +53,11 @@
                 <option value="{{ $department->id }}">{{ $department->name }}</option>
                 @endforeach
             </select>
+            @error('department_id')
+                <div class="form-text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
           </div>
 
 
@@ -56,6 +69,11 @@
                 <option value="{{ $center->id }}">{{ $center->name }}</option>
                 @endforeach
             </select>
+            @error('center_id')
+                <div class="form-text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
           </div>
 
           <!-- Button send -->
@@ -67,7 +85,7 @@
                   Registrar
                 </button>
             </form>
-            <a href="" class="btn btn-outline-danger">
+            <a href="{{ route('teachers.create') }}" class="btn btn-outline-danger">
               Cancelar
             </a>
           </div>

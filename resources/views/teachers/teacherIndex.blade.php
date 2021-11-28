@@ -30,7 +30,8 @@
             <thead>
                 <tr>
                 <th>ID</th>
-                <th>nombre</th>
+                <th>Nombre</th>
+                <th>Departamento</th>
                 <th>Campus</th>
                 <th>acción</th>
                 </tr>
@@ -42,11 +43,18 @@
                         <th>{{ $teacher->id }}</th>
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->department->name }}</td>
+                        <td>{{ $teacher->center->name }}</td>
                         <td  class="d-flex align-items-baseline gap-2">
                             {{-- Editar --}}
-                            <a href="" class="btn btn-outline-primary btn-sm mr-3">
+                            <a href="{{ route('teachers.edit', $teacher) }}" class="btn btn-outline-primary btn-sm mr-3">
                             <i class="bi bi-pencil"></i>
                             Editar
+                            </a>
+
+                            {{-- Ver más --}}
+                            <a href="{{ route('teachers.show', $teacher) }}" class="btn btn-outline-success btn-sm">
+                                <i class="bi bi-eye"></i>
+                                Ver más
                             </a>
 
                             {{-- Eliminar --}}
@@ -63,7 +71,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Estás seguro de eliminar de forma permanente?
+                                    Estás seguro de eliminar a <b>{{ $teacher->name }}</b> de forma permanente?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -83,6 +91,10 @@
                         </td>
                     </tr>
                     @endforeach
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        <b>No existen</b> registros en la base de datos
+                    </div>
                 @endif
             </tbody>
             </table>

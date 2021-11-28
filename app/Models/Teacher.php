@@ -16,15 +16,15 @@ class Teacher extends Model
     use HasFactory;
 
     public function university() {
-        return $this->belongsTo(University::class, 'id');
+        return $this->belongsTo(University::class, 'university_id');
     }
 
     public function department() {
-        return $this->belongsTo(Department::class, 'id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
     public function center() {
-        return $this->belongsTo(Center::class, 'id');
+        return $this->belongsTo(Center::class, 'center_id');
     }
 
     // has many

@@ -19,19 +19,21 @@ class CreateCommentsTable extends Migration
             $table->text('description');
 
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('teacher_id')->nullable();
+            $table->unsignedBigInteger('subject_id')->nullable();
+
+
             $table->foreign('user_id')
                     ->references('id')->on('users')
                     ->onDelete('set null');
 
-            $table->unsignedBigInteger('teacher_id')->nullable();
             $table->foreign('teacher_id')
                     ->references('id')->on('teachers')
                     ->onDelete('set null');
 
-                    $table->unsignedBigInteger('subject_id')->nullable();
             $table->foreign('subject_id')
-                ->references('id')->on('subjects')
-                ->onDelete('set null');
+                    ->references('id')->on('subjects')
+                    ->onDelete('set null');
 
             $table->timestamps();
         });

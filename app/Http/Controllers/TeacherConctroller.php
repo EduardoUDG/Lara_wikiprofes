@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\University;
 use App\Models\Department;
 use App\Models\Center;
+use App\Models\Average;
+
+use Illuminate\Support\Facades\DB;
+
 
 class TeacherConctroller extends Controller
 {
@@ -28,6 +32,13 @@ class TeacherConctroller extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'university_id' => 'required',
+            'department_id' => 'required',
+            'center_id' => 'required'
+        ]);
+
         $teacher = new Teacher();
         $teacher->name = $request->name;
         $teacher->university_id = $request->university_id;
@@ -38,19 +49,42 @@ class TeacherConctroller extends Controller
         return redirect()->route('teachers.index')->with('infor', 'Profesor creado correctamente');
     }
 
-    public function show($teacher)
+    public function show(Teacher $teacher)
     {
-        //
+        $id = $teacher->id;
+        $dominio     = Average::all()->where('teacher_id', '=', $id)->avg('domain');
+        $puntualidad = Average::all()->where('teacher_id', '=', $id)->avg('puntuality');
+        $dificultad  = Average::all()->where('teacher_id', '=', $id)->avg('difficulty');
+        $alumnos  = Average::all()->where('teacher_id', '=', $id)->count();
+
+        return view('teachers.teacherShow', compact('teacher', 'dominio', 'puntualidad', 'dificultad', 'alumnos'));
     }
 
-    public function edit($teacher)
+    public function edit(Teacher $teacher)
     {
-        //
+        $universities = University::all();
+        $departments  = Department::all();
+        $centers      = Center::all();
+        return view('teachers.teacherEdit', compact('teacher', 'universities', 'departments', 'centers'));
     }
 
-    public function update(Request $request, $teacher)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'university_id' => 'required',
+            'department_id' => 'required',
+            'center_id' => 'required'
+        ]);
+
+        $teacher->name = $request->name;
+        $teacher->university_id = $request->university_id;
+        $teacher->department_id = $request->department_id;
+        $teacher->center_id = $request->center_id;
+
+        $teacher->update();
+        return redirect()->route('teachers.index')->with('info', 'Profesor editado correctamente');
+
     }
 
     public function destroy(Teacher $teacher)
