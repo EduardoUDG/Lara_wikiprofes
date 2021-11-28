@@ -26,9 +26,9 @@ class CommentController extends Controller
         $comment->user_id = $request->user_id;
         $comment->teacher_id = $request->teacher_id;
         $comment->subject_id = $request->subject_id;
-
         $comment->save();
-        return redirect()->route('teachers.show', $teacher);
+
+        return redirect()->route('teachers.show', $request->teacher_id)->with('info', 'Comentario creado correctamente');
     }
 
     public function show($id)

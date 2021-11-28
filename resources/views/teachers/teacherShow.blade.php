@@ -127,6 +127,13 @@
                     </div>
                 </div>
 
+                @if ( session('info') )
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        {{ session('info') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                @endif
+
                 {{-- Caja de comentariosk --}}
                 @foreach ($teacher->comments as $comment)
                     <div class="card mb-4">
@@ -166,6 +173,7 @@
                 <div class="d-grid gap-2">
                     <div class="d-flex justify-content-center">
                         <h5>Materiales de apoyo</h5>
+
                     </div>
                 </div>
             </div>
@@ -185,7 +193,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('comments.store', $teacher->id) }}" method="POST">
+                    <form action="{{ route('comments.store', $teacher) }}" method="POST">
                         @csrf
                         {{-- User id--}}
                         <input type="hidden" value="@if ( Auth::user() ) {{ Auth::user()->id }} @endif" name="user_id">
