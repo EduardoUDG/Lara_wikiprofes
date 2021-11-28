@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+
+        if( Auth::user()->email == 'eduardo@gmail.com' ){
+            return view('dashboard.dashboarIndex');
+        } else {
+            return view('welcome');
+        }
+
     }
 }

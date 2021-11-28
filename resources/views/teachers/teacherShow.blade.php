@@ -118,7 +118,7 @@
                         <a href="" class=" text-secondary mx-2">Relevantes</a>
                         <a href="" class=" text-secondary mx-2">Verificadas</a>
                         <a href="" class=" text-secondary mx-2">Recientes</a>
-                        <!-- Button trigger modal -->
+                        {{--  Button trigger modal  --}}
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             <i class="bi bi-pencil"></i>
@@ -126,6 +126,13 @@
                         </button>
                     </div>
                 </div>
+
+                @if ( session('info') )
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        {{ session('info') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                @endif
 
                 {{-- Caja de comentariosk --}}
                 @foreach ($teacher->comments as $comment)
@@ -138,6 +145,12 @@
                                     <span class="badge rounded-pill bg-secondary mx-1">
                                         {{ $comment->subject->code }}
                                     </span>
+                                    @if ( Auth::user() )
+                                        @if ( Auth::user()->id == $comment->user_id )
+                                        <a href="">Editar</a>
+                                        <a href="">Eliminar</a>
+                                         @endif
+                                    @endif
                                 </div>
                                 <div class="fecha">
                                     {{ date('d/m/y', strtotime($comment->created_at)) }}
@@ -160,6 +173,7 @@
                 <div class="d-grid gap-2">
                     <div class="d-flex justify-content-center">
                         <h5>Materiales de apoyo</h5>
+
                     </div>
                 </div>
             </div>
@@ -175,14 +189,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Completa los siguientes campos {{ Auth::user()->name }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Completa los siguientes campos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('comments.store', $teacher->id) }}" method="POST">
+                    <form action="{{ route('comments.store', $teacher) }}" method="POST">
                         @csrf
                         {{-- User id--}}
-                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                        <input type="hidden" value="@if ( Auth::user() ) {{ Auth::user()->id }} @endif" name="user_id">
                         {{-- Teacher id --}}
                         <input type="hidden" value="{{ $teacher->id }}" name="teacher_id">
 
@@ -205,7 +219,11 @@
 
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Guardar comentario</button>
+                            @if ( Auth::user() )
+                                <button type="submit" class="btn btn-primary btn-sm">Guardar comentario</button>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Guardar comentario</a>
+                            @endif
                         </div>
                     </form>
                 </div>
