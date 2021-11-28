@@ -33,7 +33,7 @@
             <a href="{{ route('teachers.index') }}" class="btn btn-outline-primary mb-3 w-100">
                 Profesores
             </a>
-            <a href="" class="btn btn-outline-primary mb-3 w-100">
+            <a href="{{ route('universities.index') }}" class="btn btn-outline-primary mb-3 w-100">
                 Universidades
             </a>
             <a href="" class="btn btn-outline-primary mb-3 w-100">

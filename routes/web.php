@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\TeacherConctroller;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +21,6 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 Route::resource('teachers', TeacherConctroller::class)->parameters(['teachers' => 'teacher'])->names('teachers');
 
 Route::resource('comments', CommentController::class)->parameters(['comments' => 'teacher'])->names('comments');
+
+Route::resource('universities', UniversityController::class)->parameters(['universities' => 'university'])->names('universities');
+
