@@ -175,31 +175,39 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Completa los siguientes campos</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Completa los siguientes campos {{ Auth::user()->name }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route('comments.store', $teacher->id) }}" method="POST">
+                        @csrf
+                        {{-- User id--}}
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                        {{-- Teacher id --}}
+                        <input type="hidden" value="{{ $teacher->id }}" name="teacher_id">
+
+
                         <div class="mb-3">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect"
+                                <select class="form-select" id="subject_id" name="subject_id"
                                     aria-label="Floating label select example">
-                                    <option selected>clave</option>
-                                    <option value="1">I7702</option>
-                                    <option value="2">I7709</option>
+                                    @foreach ($teacher->subjects as $subject)
+                                        <option value="{{ $subject->id }}">{{ $subject->code }}</option>
+                                    @endforeach
                                 </select>
-                                <label for="floatingSelect">Selecciona una clave de materia</label>
+                                <label for="subject_id">Selecciona una clave de materia</label>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Comentario:</label>
-                            <textarea class="form-control" id="message-text" style="height: 150px"></textarea>
+                            <label for="description" class="col-form-label">Comentario:</label>
+                            <textarea name="description" class="form-control" id="description" style="height: 150px"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Guardar comentario</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
-                    <button type="button" class="btn btn-primary btn-sm">Guardar comentario</button>
                 </div>
             </div>
         </div>
