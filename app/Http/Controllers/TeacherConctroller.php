@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\University;
 use App\Models\Department;
 use App\Models\Center;
+use App\Models\Average;
+
+use Illuminate\Support\Facades\DB;
+
 
 class TeacherConctroller extends Controller
 {
@@ -47,8 +51,12 @@ class TeacherConctroller extends Controller
 
     public function show(Teacher $teacher)
     {
+        $id = $teacher->id;
+        $dominio     = Average::all()->where('teacher_id', '=', $id)->avg('domain');
+        $puntualidad = Average::all()->where('teacher_id', '=', $id)->avg('puntuality');
+        $dificultad  = Average::all()->where('teacher_id', '=', $id)->avg('difficulty');
 
-        // return view('teachers.teacherShow', compact('teacher'));
+        return view('teachers.teacherShow', compact('teacher', 'dominio', 'puntualidad', 'dificultad'));
     }
 
     public function edit(Teacher $teacher)

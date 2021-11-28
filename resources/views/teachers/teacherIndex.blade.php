@@ -51,6 +51,12 @@
                             Editar
                             </a>
 
+                            {{-- Ver más --}}
+                            <a href="{{ route('teachers.show', $teacher) }}" class="btn btn-outline-success btn-sm">
+                                <i class="bi bi-eye"></i>
+                                Ver más
+                            </a>
+
                             {{-- Eliminar --}}
                             <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-{{$teacher->id}}">
                                 <i class="bi bi-trash"></i>
