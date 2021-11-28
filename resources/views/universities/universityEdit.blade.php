@@ -18,13 +18,13 @@
         <hr>
 
         {{-- Formulario --}}
-        <form action="{{ route('teachers.update', $teacher) }}" method="POST">
+        <form action="{{ route('universities.update', $university) }}" method="POST">
             @csrf
             @method('PATCH')
           <div class="mb-3">
             <label for="name" class="form-label">Nombre del profesor</label>
             <input type="text" name="name" class="form-control" id="name" placeholder="Nombre"
-            value="{{ $teacher->name }}">
+            value="{{ old('name', $university->name) }}">
             @error('name')
                 <div id="name" class="form-text text-danger">
                     {{ $message }}
@@ -32,75 +32,18 @@
             @enderror
           </div>
 
-          <div class="group-input mb-3">
-            <label for="">Universidad</label>
-            <select class="form-select" name="university_id">
-                <option selected value="{{ $teacher->university->id }}">
-                    {{ $teacher->university->name }}
-                </option>
-                @foreach ( $universities as $university )
-                    <option value="{{ $university->id }}">{{ $university->name }}</option>
-                @endforeach
-            </select>
-            @error('university_id')
-                <div id="name" class="form-text text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-          </div>
 
-
-          <div class="group-input mb-3">
-            <label for="">Departamento</label>
-            <select class="form-select" name="department_id">
-              <option selected value="{{ $teacher->department->id }}">
-                {{ $teacher->department->name }}
-              </option>
-                @foreach ( $departments as $department )
-                <option value="{{ $department->id }}">{{ $department->name }}</option>
-                @endforeach
-            </select>
-            @error('department_id')
-                <div id="name" class="form-text text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-          </div>
-
-
-          <div class="group-input mb-3">
-            <label for="">Campus  </label>
-            <select class="form-select" name="center_id">
-              <option selected value="{{ $teacher->center->id }}">
-                  {{ $teacher->center->name }}
-              </option>
-                @foreach ( $centers as $center )
-                <option value="{{ $center->id }}">{{ $center->name }}</option>
-                @endforeach
-            </select>
-            @error('center_id')
-                <div id="name" class="form-text text-danger">
-                    {{ $message }}
-                </div>
-            @enderror
-          </div>
-
-          <!-- Button send -->
+          {{--  Button send  --}}
           <div class="d-flex justify-content-between">
-            <form action="{{ route('teachers.store') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-primary">
-                  <i class="bi bi-send mx-1"></i>
-                  Editar
-                </button>
-            </form>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-send mx-1"></i>
+                Editar
+            </button>
             <a href="{{ route('teachers.create') }}" class="btn btn-outline-danger">
-              Cancelar
+                Cancelar
             </a>
           </div>
         </form>
-
-
       </div>
     </div>
   </div>

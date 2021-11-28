@@ -1,6 +1,6 @@
 @extends('partials.template')
 
-@section('title', 'Lista de profesores')
+@section('title', 'Lista de universidades')
 
 @section('content')
 
@@ -45,12 +45,6 @@
                             <a href="{{ route('universities.edit', $university) }}" class="btn btn-outline-primary btn-sm mr-3">
                             <i class="bi bi-pencil"></i>
                             Editar
-                            </a>
-
-                            {{-- Ver más --}}
-                            <a href="{{ route('universities.show', $university) }}" class="btn btn-outline-success btn-sm">
-                                <i class="bi bi-eye"></i>
-                                Ver más
                             </a>
 
                             {{-- Eliminar --}}

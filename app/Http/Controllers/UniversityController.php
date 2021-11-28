@@ -16,31 +16,52 @@ class UniversityController extends Controller
 
     public function create()
     {
-        //
+
+        return view('universities.universityCreate');
+
     }
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $university = new University();
+        $university->name = $request->name;
+        $university->save();
+
+        return redirect()->route('universities.index')->with('info', 'Universidad creada correctamente');
+
     }
 
-    public function show($id)
+    public function show($university)
     {
         //
     }
 
-    public function edit($id)
+    public function edit(University $university)
     {
-        //
+
+        return view('universities.universityEdit', compact('university'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, University $university)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $university->name = $request->name;
+        $university->save();
+
+        return redirect()->route('universities.index')->with('info', 'Universidad editada correctamente');
     }
 
-    public function destroy($id)
+    public function destroy(University $university)
     {
-        //
+        $university->delete();
+        return redirect()->route('universities.index')->with('info', 'Universidad eliminada correctamente');
     }
+
 }
