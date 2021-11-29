@@ -36,10 +36,10 @@
             <a href="{{ route('universities.index') }}" class="btn btn-outline-primary mb-3 w-100">
                 Universidades
             </a>
-            <a href="" class="btn btn-outline-primary mb-3 w-100">
+            <a href="{{ route('departments.index') }}" class="btn btn-outline-primary mb-3 w-100">
                 Departamentos
             </a>
-            <a href="" class="btn btn-outline-primary mb-3 w-100">
+            <a href="{{ route('centers.index') }}" class="btn btn-outline-primary mb-3 w-100">
                 Centros universitarios
             </a>
             <a href="" class="btn btn-outline-primary mb-3 w-100 disabled">Roles</a>
