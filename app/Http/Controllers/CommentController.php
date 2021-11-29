@@ -46,8 +46,10 @@ class CommentController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, Teacher $teacher)
     {
-        //
+        $comment = Comment::find( $request->comment_id );
+        $comment->delete();
+        return redirect()->route('teachers.show', $teacher->id)->with('info', 'Comentario eliminado correctamente');
     }
 }

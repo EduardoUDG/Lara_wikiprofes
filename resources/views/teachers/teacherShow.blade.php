@@ -134,7 +134,7 @@
                     </div>
                 @endif
 
-                {{-- Caja de comentariosk --}}
+                {{-- Print cajca de comentariosk --}}
                 @foreach ($teacher->comments as $comment)
                     <div class="card mb-4">
                         <div class="card-header">
@@ -148,7 +148,12 @@
                                     @if (Auth::user())
                                         @if (Auth::user()->id == $comment->user_id)
                                             <a href="">Editar</a>
-                                            <a href="">Eliminar</a>
+                                            <form action="{{ route('comments.destroy', $teacher) }}" method="POST" class="d-inline-block">
+                                                <input type="hidden" value="{{ $comment->id }}" name="comment_id">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="link-primary border-0">Eliminar</button>
+                                            </form>
                                         @endif
                                     @endif
                                 </div>
