@@ -118,7 +118,7 @@
                         <a href="" class=" text-secondary mx-2">Relevantes</a>
                         <a href="" class=" text-secondary mx-2">Verificadas</a>
                         <a href="" class=" text-secondary mx-2">Recientes</a>
-                        {{--  Button trigger modal  --}}
+                        {{-- Button trigger modal --}}
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             <i class="bi bi-pencil"></i>
@@ -127,11 +127,11 @@
                     </div>
                 </div>
 
-                @if ( session('info') )
+                @if (session('info'))
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">
                         {{ session('info') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
+                    </div>
                 @endif
 
                 {{-- Caja de comentariosk --}}
@@ -145,11 +145,11 @@
                                     <span class="badge rounded-pill bg-secondary mx-1">
                                         {{ $comment->subject->code }}
                                     </span>
-                                    @if ( Auth::user() )
-                                        @if ( Auth::user()->id == $comment->user_id )
-                                        <a href="">Editar</a>
-                                        <a href="">Eliminar</a>
-                                         @endif
+                                    @if (Auth::user())
+                                        @if (Auth::user()->id == $comment->user_id)
+                                            <a href="">Editar</a>
+                                            <a href="">Eliminar</a>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="fecha">
@@ -195,8 +195,8 @@
                 <div class="modal-body">
                     <form action="{{ route('comments.store', $teacher) }}" method="POST">
                         @csrf
-                        {{-- User id--}}
-                        <input type="hidden" value="@if ( Auth::user() ) {{ Auth::user()->id }} @endif" name="user_id">
+                        {{-- User id --}}
+                        <input type="hidden" value="@if (Auth::user()) {{ Auth::user()->id }} @endif" name="user_id">
                         {{-- Teacher id --}}
                         <input type="hidden" value="{{ $teacher->id }}" name="teacher_id">
 
@@ -214,13 +214,61 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="col-form-label">Comentario:</label>
-                            <textarea name="description" class="form-control" id="description" style="height: 150px"></textarea>
+                            <textarea name="description" class="form-control" id="description"
+                                style="height: 150px"></textarea>
                         </div>
 
                         <div class="d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
-                            @if ( Auth::user() )
+                            @if (Auth::user())
                                 <button type="submit" class="btn btn-primary btn-sm">Guardar comentario</button>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Guardar comentario</a>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Modal Evaluación --}}
+    <div class="modal" id="evaluar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Completa para evaluar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" class="row g-3">
+                        @csrf
+                        {{-- User id --}}
+                        <input type="hidden" value="@if (Auth::user()) {{ Auth::user()->id }} @endif" name="user_id">
+                        {{-- Teacher id --}}
+                        <input type="hidden" value="{{ $teacher->id }}" name="teacher_id">
+
+                        <div class="col-md-6">
+                            <label for="dominio" class="form-label">Dominio</label>
+                            <input type="number" name="dominio" class="form-control" id="dominio" placeholder="0-100"
+                                min="0" max="100">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="puntualidad" class="form-label">Puntualidad</label>
+                            <input type="number" name="puntualidad" class="form-control" id="puntualidad"
+                                placeholder="0-100" min="0" max="100">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="dificultad" class="form-label">Dificultad</label>
+                            <input type="number" name="dificultad" class="form-control" id="puntualidad"
+                                placeholder="0-100" min="0" max="100">
+                        </div>
+                        <!-- botones -->
+                        <div class="col-12 d-flex justify-content-between gap-2 my-3">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
+                            @if (Auth::user())
+                                <button type="submit" class="btn btn-primary btn-sm">Evaluar</button>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Guardar comentario</a>
                             @endif
