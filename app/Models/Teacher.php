@@ -34,7 +34,7 @@ class Teacher extends Model
     }
 
     public function comments() {
-        return $this->hasMany(Comment::class, 'teacher_id');
+        return $this->hasMany(Comment::class, 'teacher_id')->orderBy('id', 'desc');
     }
 
     public function averages() {
