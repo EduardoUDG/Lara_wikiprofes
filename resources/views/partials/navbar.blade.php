@@ -26,7 +26,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Terminos y condiciones</a>
                 </li>
-                @if ( Auth::user()->email == 'eduardo@gmail.com' )
+                @if ( Auth::user() && Auth::user()->email == 'eduardo@gmail.com' )
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">dashboard</a>
                     </li>
