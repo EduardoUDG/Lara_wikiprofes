@@ -7,7 +7,7 @@
 <div class="container my-5">
     <div class="row justify-content-center">
 
-        <div class="col-8">
+        <div class="col-10">
             <div class="d-flex my-3 justify-content-between align-items-baseline">
             <h2>Lista de Profesores</h2>
             <a href="{{ route('teachers.create') }}" class="btn btn-primary shadow">
