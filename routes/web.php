@@ -8,6 +8,7 @@ use App\Http\Controllers\TeacherConctroller;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DeparmentController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
@@ -31,3 +32,6 @@ Route::resource('departments', DepartmentController::class)->parameters(['depart
 
 Route::resource('centers', CenterController::class)->parameters(['centers' => 'center'])->names('centers');
 
+Route::get('serach/teachers', [SearchController::class, 'teachers'])->name('search.teachers');
+
+Route::get('serach/teacher', [SearchController::class, 'findTeacher'])->name('search.findTeacher');

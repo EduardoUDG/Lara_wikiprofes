@@ -1,18 +1,21 @@
 @extends('partials.template')
-
 @section('title', 'Wikiprofes')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">
+@endsection
 
 @section('content')
 
-    {{--  jumbotron  --}}
+    {{--  jumbotron/Buscador  --}}
     <div class="jumbotron mb-5">
         <div class="container">
             <div class="row">
                 <div class="jumbotron-body d-flex justify-content-center align-items-center">
                     <div class="col-6">
-                        <form action="" method="" class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Nombre del profesor">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                        <form action="{{ route('search.findTeacher') }}" method="GET" class="input-group mb-3">
+                            <input type="text" name="name" id="search" class="form-control" placeholder="Nombre del profesor">
+                            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -131,4 +134,27 @@
 
 
 
+@endsection
+
+
+@section('js')
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <script>
+        $('#search').autocomplete({
+            source: function ( req, res ) {
+                $.ajax({
+                    url: "{{ route('search.teachers') }}",
+                    dataType: 'json',
+                    data: {
+                        term: req.term
+                    },
+                    success: function( data ) {
+                        info = `<a href="{{ route('home') }}">${data}</a>`
+                        res( data )
+                    }
+                });
+            }
+        });
+    </script>
 @endsection
