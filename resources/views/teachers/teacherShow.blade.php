@@ -233,7 +233,7 @@
     </div>
 
 
-    {{-- Modal Evaluación --}}
+    {{-- Modal Evaluación profesor --}}
     <div class="modal" id="evaluar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -242,7 +242,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST" class="row g-3">
+                    <form action="{{ route('averages.store') }}" method="POST" class="row g-3">
                         @csrf
                         {{-- User id --}}
                         <input type="hidden" value="@if (Auth::user()) {{ Auth::user()->id }} @endif" name="user_id">
@@ -251,17 +251,17 @@
 
                         <div class="col-md-6">
                             <label for="dominio" class="form-label">Dominio</label>
-                            <input type="number" name="dominio" class="form-control" id="dominio" placeholder="0-100"
-                                min="0" max="100">
+                            <input type="number" name="domain" class="form-control"
+                            placeholder="0-100" min="0" max="100">
                         </div>
                         <div class="col-md-6">
                             <label for="puntualidad" class="form-label">Puntualidad</label>
-                            <input type="number" name="puntualidad" class="form-control" id="puntualidad"
+                            <input type="number" name="puntuality" class="form-control"
                                 placeholder="0-100" min="0" max="100">
                         </div>
                         <div class="col-md-12">
                             <label for="dificultad" class="form-label">Dificultad</label>
-                            <input type="number" name="dificultad" class="form-control" id="puntualidad"
+                            <input type="number" name="difficulty" class="form-control"
                                 placeholder="0-100" min="0" max="100">
                         </div>
                         <!-- botones -->

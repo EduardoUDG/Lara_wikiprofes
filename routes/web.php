@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AverageController;
 use App\Http\Controllers\CenterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,8 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 Route::resource('teachers', TeacherConctroller::class)->parameters(['teachers' => 'teacher'])->names('teachers');
 
 Route::resource('comments', CommentController::class)->parameters(['comments' => 'teacher'])->names('comments');
+
+Route::resource('averages', AverageController::class)->parameters(['averages' => 'averages'])->names('averages');
 
 Route::resource('universities', UniversityController::class)->parameters(['universities' => 'university'])->names('universities');
 
