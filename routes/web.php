@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CenterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,4 +28,6 @@ Route::resource('comments', CommentController::class)->parameters(['comments' =>
 Route::resource('universities', UniversityController::class)->parameters(['universities' => 'university'])->names('universities');
 
 Route::resource('departments', DepartmentController::class)->parameters(['departments' => 'department'])->names('departments');
+
+Route::resource('centers', CenterController::class)->parameters(['centers' => 'center'])->names('centers');
 
