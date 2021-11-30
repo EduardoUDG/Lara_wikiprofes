@@ -73,18 +73,20 @@
 
     {{--  about  --}}
     <div class="container acercade">
-        <div class="row p-4 jumbotron border justify-content-between ">
-            <div class="col-8">
-                <h5>Acerca de Wikiprofes</h5>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra tempus,
-                dignissim magna amet. Mi, urna sollicitudin neque phasellus dictum posuere.
-                Sollicitudin elit viverra diam augue porttitor nisl porttitor commodo,
-                dui. Dolor eget odio odio lacus, sed facilisis iaculis sit et. Volutpat
-                nibh quisque lacus, pellentesque. Vel id vitae ullamcorper eu id duis
-                scelerisque. Arcu quis felis ac, sodales aenean placerat sagittis.
-            </div>
-            <div class="col-4">
-                <img class="img-thumbnail" src="./logo.png" width="120px">
+        <div class="row p-4 jumbotron border  ">
+            <div class="d-flex justify-content-between">
+                <div class="col-8">
+                    <h5>Acerca de Wikiprofes</h5>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra tempus,
+                    dignissim magna amet. Mi, urna sollicitudin neque phasellus dictum posuere.
+                    Sollicitudin elit viverra diam augue porttitor nisl porttitor commodo,
+                    dui. Dolor eget odio odio lacus, sed facilisis iaculis sit et. Volutpat
+                    nibh quisque lacus, pellentesque. Vel id vitae ullamcorper eu id duis
+                    scelerisque. Arcu quis felis ac, sodales aenean placerat sagittis.
+                </div>
+                <div class="col-4">
+                    <img class="img-thumbnail" src="https://www.dwgautocad.com/uploads/8/3/4/5/8345765/logo-udg-png-blanco-y-negro_orig.png" width="120px">
+                </div>
             </div>
         </div>
     </div>
