@@ -249,7 +249,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Completa para evaluar</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Evalua a: <i class="badge bg-dark text-wrap">{{ $teacher->name }}</i></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -270,12 +270,18 @@
                             <input type="number" name="puntuality" class="form-control"
                                 placeholder="0-100" min="0" max="100">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="dificultad" class="form-label">Dificultad</label>
                             <input type="number" name="difficulty" class="form-control"
                                 placeholder="0-100" min="0" max="100">
                         </div>
-                        <!-- botones -->
+                        <div class="col-md-6">
+                            <label for="qualification" class="form-label">Promedio obtenido</label>
+                            <input type="number" name="qualification" class="form-control"
+                                placeholder="0-100" min="0" max="100">
+                        </div>
+
+                        {{--  send evaluated  --}}
                         <div class="col-12 d-flex justify-content-between gap-2 my-3">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">cancelar</button>
                             @if (Auth::user())

@@ -43,7 +43,7 @@ class TeacherConctroller extends Controller
         ]);
 
         $teacher = new Teacher();
-        $teacher->name = $request->name;
+        $teacher->name = strtoupper($request->name);
         $teacher->university_id = $request->university_id;
         $teacher->department_id = $request->department_id;
         $teacher->center_id = $request->center_id;
@@ -75,7 +75,9 @@ class TeacherConctroller extends Controller
         $universities = University::all();
         $departments  = Department::all();
         $centers      = Center::all();
-        return view('teachers.teacherEdit', compact('teacher', 'universities', 'departments', 'centers'));
+        $subject =  Subject::where('teacher_id', $teacher->id)->first();
+
+        return view('teachers.teacherEdit', compact('teacher', 'universities', 'departments', 'centers', 'subject'));
     }
 
     public function update(Request $request, Teacher $teacher)
@@ -84,15 +86,16 @@ class TeacherConctroller extends Controller
             'name' => 'required',
             'university_id' => 'required',
             'department_id' => 'required',
-            'center_id' => 'required'
+            'center_id' => 'required',
         ]);
 
-        $teacher->name = $request->name;
+        $teacher->name = strtoupper($request->name);
         $teacher->university_id = $request->university_id;
         $teacher->department_id = $request->department_id;
         $teacher->center_id = $request->center_id;
 
         $teacher->update();
+
         return redirect()->route('teachers.index')->with('info', 'Profesor editado correctamente');
 
     }

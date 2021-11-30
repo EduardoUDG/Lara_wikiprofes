@@ -19,6 +19,7 @@ class CreateAveragesTable extends Migration
             $table->integer('domain');
             $table->integer('puntuality');
             $table->integer('difficulty');
+            $table->integer('qualification');
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('teacher_id')->nullable();

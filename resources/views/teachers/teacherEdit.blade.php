@@ -85,7 +85,7 @@
             @enderror
           </div>
 
-          <!-- Button send -->
+          {{--  Button send  --}}
           <div class="d-flex justify-content-between">
             <form action="{{ route('teachers.store') }}" method="POST">
                 @csrf
