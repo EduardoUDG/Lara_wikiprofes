@@ -99,6 +99,12 @@
             </tbody>
             </table>
 
+            @if ( $teachers->count() > 0)
+            <div class="my-5 d-flex justify-content-end ">
+                {{ $teachers->links() }}
+            </div>
+            @endif
+
 
 
         </div>
