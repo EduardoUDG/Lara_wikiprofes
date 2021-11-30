@@ -66,8 +66,9 @@ class TeacherConctroller extends Controller
         $puntualidad = Average::all()->where('teacher_id', '=', $id)->avg('puntuality');
         $dificultad  = Average::all()->where('teacher_id', '=', $id)->avg('difficulty');
         $alumnos  = Average::all()->where('teacher_id', '=', $id)->count();
+        $average  = Average::all()->where('teacher_id', '=', $id)->avg('qualification');
 
-        return view('teachers.teacherShow', compact('teacher', 'dominio', 'puntualidad', 'dificultad', 'alumnos'));
+        return view('teachers.teacherShow', compact('teacher', 'dominio', 'puntualidad', 'dificultad', 'alumnos', 'average'));
     }
 
     public function edit(Teacher $teacher)

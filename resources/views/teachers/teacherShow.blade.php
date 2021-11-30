@@ -68,11 +68,7 @@
                                                 Promedio de alumnos:
                                             </p>
                                             <h6>
-                                                @if ( round($dominio, 0) > 0)
-                                                    {{ round($dominio, 0) }}%
-                                                @else
-                                                    0%
-                                                @endif
+                                                {{ round($average, 0 )  }}%
                                             </h6>
                                         </div>
 

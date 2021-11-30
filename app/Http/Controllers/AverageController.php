@@ -24,6 +24,7 @@ class AverageController extends Controller
             'domain' => 'required',
             'puntuality' => 'required',
             'difficulty' => 'required',
+            'qualification' => 'required',
         ]);
 
         $average = new Average();
@@ -31,6 +32,8 @@ class AverageController extends Controller
         $average->domain = $request->domain;
         $average->puntuality = $request->puntuality;
         $average->difficulty = $request->difficulty;
+        $average->qualification = $request->qualification;
+
         $average->user_id = $request->user_id;
         $average->teacher_id = $request->teacher_id;
 

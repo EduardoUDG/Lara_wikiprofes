@@ -21,7 +21,8 @@
         <form action="{{ route('teachers.store') }}" method="POST">
           <div class="mb-3">
             <label for="name" class="form-label">Nombre del profesor</label>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Nombre">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Nombre"
+            value="{{ old('name') }}">
             @error('name')
                 <div id="name" class="form-text text-danger">
                     {{ $message }}
