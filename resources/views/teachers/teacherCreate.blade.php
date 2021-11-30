@@ -76,6 +76,19 @@
             @enderror
           </div>
 
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Código de materia</label>
+            <input type="text" name="code" class="form-control" id="name" placeholder="ejemplo: I59002">
+            @error('code')
+                <div id="code" class="form-text text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
+          </div>
+
+
+
           <!-- Button send -->
           <div class="d-flex justify-content-between">
             <form action="{{ route('teachers.store') }}" method="POST">

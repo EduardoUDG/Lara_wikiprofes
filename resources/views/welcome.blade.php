@@ -8,7 +8,7 @@
 @section('content')
 
     {{--  jumbotron/Buscador  --}}
-    <div class="jumbotron mb-5">
+    <div class="jumbotron mb-5 border">
         <div class="container">
             <div class="row">
                 <div class="jumbotron-body d-flex justify-content-center align-items-center">
@@ -95,13 +95,14 @@
     <div class="container mt-5">
         <div class="row justify-content-between">
             <div class="col-5 p-5 jumbotron border">
+                <h6 class="text-center">TOP profesores</h6>
+                <hr>
                 <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">dominio</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -109,18 +110,16 @@
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
-                        <td>@mdo</td>
                       </tr>
                       <tr>
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
-                        <td>@fat</td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                        <td >Larry the Bird</td>
+                        <td>Bird</td>
                       </tr>
                     </tbody>
                   </table>

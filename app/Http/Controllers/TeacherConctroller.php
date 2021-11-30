@@ -9,6 +9,8 @@ use App\Models\Department;
 use App\Models\Center;
 use App\Models\Average;
 
+use App\Models\Subject;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -36,7 +38,8 @@ class TeacherConctroller extends Controller
             'name' => 'required',
             'university_id' => 'required',
             'department_id' => 'required',
-            'center_id' => 'required'
+            'center_id' => 'required',
+            'code' => 'required'
         ]);
 
         $teacher = new Teacher();
@@ -45,7 +48,14 @@ class TeacherConctroller extends Controller
         $teacher->department_id = $request->department_id;
         $teacher->center_id = $request->center_id;
 
+
         $teacher->save();
+
+        $subject = new Subject();
+        $subject->code = $request->code;
+        $subject->teacher_id = $teacher->id;
+        $subject->save();
+
         return redirect()->route('teachers.index')->with('infor', 'Profesor creado correctamente');
     }
 

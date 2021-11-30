@@ -67,7 +67,13 @@
                                                 <i class="bi bi-check-circle text-primary"></i>
                                                 Promedio de alumnos:
                                             </p>
-                                            <h6>90%</h6>
+                                            <h6>
+                                                @if ( round($dominio, 0) > 0)
+                                                    {{ round($dominio, 0) }}%
+                                                @else
+                                                    0%
+                                                @endif
+                                            </h6>
                                         </div>
 
                                         <div class="d-flex justify-content-between">
