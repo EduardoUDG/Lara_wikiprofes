@@ -57,3 +57,7 @@
 .bb-primary {
     border-bottom: 3px solid var(--text-primary);
 }
+
+.txt-justify {
+    text-align: justify;
+}

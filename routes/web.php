@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DeparmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TerminosController;
 use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
@@ -38,3 +39,5 @@ Route::resource('centers', CenterController::class)->parameters(['centers' => 'c
 Route::get('serach/teachers', [SearchController::class, 'teachers'])->name('search.teachers');
 
 Route::get('serach/teacher', [SearchController::class, 'findTeacher'])->name('search.findTeacher');
+
+Route::get('terminos', [TerminosController::class, 'index'])->name('terminos.index');
