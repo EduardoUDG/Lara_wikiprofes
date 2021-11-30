@@ -29,6 +29,11 @@ class SearchController extends Controller
 
     public function findTeacher(Request $request) {
 
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+
         $name = $request->name;
 
         // $teacher = Teacher::where('name', 'LIKE' ,'%' . $name . '%')->get()->first();

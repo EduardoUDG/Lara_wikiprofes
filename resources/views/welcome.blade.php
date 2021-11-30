@@ -14,9 +14,14 @@
                 <div class="jumbotron-body d-flex justify-content-center align-items-center">
                     <div class="col-6">
                         <form action="{{ route('search.findTeacher') }}" method="GET" class="input-group mb-3">
-                            <input type="text" name="name" id="search" class="form-control" placeholder="Nombre del profesor">
+                            <input type="text" name="name" id="search" class="form-control @error('name')is-invalid @enderror" placeholder="Nombre del profesor">
                             <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
                         </form>
+                        @error('name')
+                            <div class="text-center form-text text-danger ">
+                                Se necesita ingresar el nombre de un profesor existente
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
